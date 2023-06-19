@@ -4,8 +4,8 @@
         <div class="py-3">
             <button @click="back()" class="shadow-md px-4 py-1 hover:bg-violet-50">Back</button>
         </div>
-        <div v-if="pending">
-            Loading...
+        <div v-if="pending" class="flex justify-center text-7xl">
+            <div class="loader"></div>
         </div>
         <div v-else>
             <form class="space-y-3" @submit.prevent="updateUser()">
@@ -114,3 +114,22 @@ async function updateUser() {
     })
 }
 </script>
+
+<style>
+@keyframes loader {
+  0% {
+    content: '.';
+  }
+  33% {
+    content: '..';
+  }
+  66% {
+    content: '...';
+  }
+}
+
+.loader::after {
+  content: '...';
+  animation: loader 1s steps(3) infinite;
+}
+</style>

@@ -65,8 +65,8 @@ function editUser(userId) {
       </FormButton>
     </div>
     <div>
-      <div v-if="pending">
-        Loading ...
+      <div v-if="pending" class="flex justify-center text-7xl">
+        <div class="loader"></div>
       </div>
       <div v-else>
         <table class="min-w-full text-left text-sm font-light">
@@ -109,3 +109,22 @@ function editUser(userId) {
     </div>
   </div>
 </template>
+
+<style>
+@keyframes loader {
+  0% {
+    content: '.';
+  }
+  33% {
+    content: '..';
+  }
+  66% {
+    content: '...';
+  }
+}
+
+.loader::after {
+  content: '...';
+  animation: loader 1s steps(3) infinite;
+}
+</style>
